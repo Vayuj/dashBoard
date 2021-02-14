@@ -1,0 +1,19 @@
+<div class="sidebar-heading">
+    {{option.title}}
+</div>
+<li *ngFor="let i of option.options" class="nav-item">
+    <a class="nav-link" [ngClass]="{'collapsed':i.isCollapsed}" routerLink="{{i.link}}" attr.data-toggle="{{i.isCollapsed?'collapse':''}}" attr.data-target="{{'#' + i.id1}}" aria-expanded="true" attr.aria-controls="{{i.id1}}">
+        <i class="{{i.logo}}"></i><!--conditional property and class-->
+        <span>{{i.title}}</span>
+    </a>
+    <div *ngIf="i.isCollapsed">
+        <div id="{{i.id1}}" class="collapse" attr.aria-labelledby="{{'heading' + i.id2}}" data-parent="#accordionSidebar"><!--passing in html tag-->
+            <div class="bg-white py-2 collapse-inner rounded">
+                <div *ngFor="let j of i.subMenus">
+                    <app-li-div-com [subMenu]="j"></app-li-div-com>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+<hr class="sidebar-divider">

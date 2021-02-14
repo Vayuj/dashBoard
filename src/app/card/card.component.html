@@ -1,0 +1,31 @@
+<div class="{{'card border-left-' + cardInfo.color + ' shadow h-100 py-2'}}">
+    <div class="card-body">
+        <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+                <div class="{{'text-xs font-weight-bold text-' + cardInfo.color + ' text-uppercase mb-1'}}">
+                    {{cardInfo.title}} 
+                    <span *ngIf="cardInfo.time?.isEnabled">{{cardInfo.time?.key}}</span>
+                </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                    <span *ngIf="cardInfo.currency?.isEnabled">{{cardInfo.currency?.key}}</span>
+                    <span *ngIf="!cardInfo.bar">{{cardInfo.num}}</span>
+                    <span *ngIf="cardInfo.bar">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-4">
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{cardInfo.num}}%</div>
+                            </div>
+                            <div class="col-8">
+                                <div class="progress progress-sm mr-2">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [style.width]="cardInfo.num + '%'"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="col-auto">
+                <i class={{cardInfo.logo}}></i>
+            </div>
+        </div>
+    </div>
+</div>
